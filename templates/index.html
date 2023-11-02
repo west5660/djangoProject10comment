@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css.css' %}">
+    <meta charset="UTF-8">
+    <title>HOME</title>
+</head>
+<body>
+    <h2>Главная</h2>
+    {% for one in kino %}
+
+    <a href="{% url 'film' one.id%}"> Смотреть фильм {{ one.title }} </a>
+    <br>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+ {% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css1.css' %}">
+    <meta charset="UTF-8">
+    <title>KINO</title>
+
+</head>
+<body>
+    <h2>Фильмы</h2>
+    <iframe src="{{ kino.link }}" frameborder="0" width="640" height="350"></iframe>
+    <hr>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ forma }}
+        </table>
+        {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+        <input type="submit" value="Отправить">
+    </form>
+    {% for one in commentsall %}
+     <div>
+    Имя: {{ one.name }}
+    Дата: {{ one.timedata }}
+    Комментарий: {{ one.body }}
+    </div>
+    {% endfor %}
+
+
+</body>
+</html>
